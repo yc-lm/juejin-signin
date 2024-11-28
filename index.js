@@ -1,6 +1,6 @@
 const JuejinHelper = require("juejin-helper");
 const config = require('./config/index');
-const {transporter} = require('./helper/email')
+const {sendEmail} = require('./helper/email')
 
 async function run() {
     const juejin = new JuejinHelper();
@@ -27,7 +27,8 @@ async function run() {
     console.log(isCheck, num);
     // 获取统计签到天数
     // await growth.getCounts();
-
+    const emailConfig = config.EMAIL_CONFIG;
+    await sendEmail({...emailConfig, html: "<span>是否已经签到：" + isCheck + ", 当前矿石数量：" + num + "</span>"})
 
     // 获取抽奖幸运用户
     // => { lotteries: [{ lottery_history_id }, ...] }
@@ -40,7 +41,7 @@ async function run() {
 
     // 获取我的幸运值
     // await growth.getMyLucky();
-    // await juejin.logout();
+    await juejin.logout();
 }
 
 run();

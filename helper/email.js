@@ -1,18 +1,20 @@
 const nodemailer = require("nodemailer");
 
+const MY_EMAIL = 'test@qq.com'
+const AUTH = {
+    user: MY_EMAIL,
+    pass: "xxxxx",
+}
 const transporter = nodemailer.createTransport({
-    host: "smtp.qq.email",
+    host: "smtp.qq.com",
     port: 465,
-    secure: false, // true for port 465, false for other ports
-    auth: {
-        user: "maddison53@ethereal.email",
-        pass: "",
-    },
+    secure: true, // true for port 465, false for other ports
+    auth: AUTH
 });
-const sendEmail = async (transporter, {to='',subject='',text='',html=''}) => {
+const sendEmail = async ({to = '', subject = '', text = '', html = ''}) => {
     // send mail with defined transport object
     const info = await transporter.sendMail({
-        from: "maddison53@ethereal.email", // sender address
+        from: MY_EMAIL, // sender address
         to: to, // list of receivers
         subject: subject, // Subject line
         text: text, // plain text body
@@ -23,6 +25,5 @@ const sendEmail = async (transporter, {to='',subject='',text='',html=''}) => {
 }
 
 module.exports = {
-    transporter,
     sendEmail
 }
