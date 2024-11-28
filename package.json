@@ -1,0 +1,16 @@
+{
+  "name": "juejin-signin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "juejin-helper": "^1.7.2",
+    "nodemailer": "^6.9.16",
+    "nrm": "^1.4.0"
+  }
+}
