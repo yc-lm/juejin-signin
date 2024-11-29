@@ -1,6 +1,7 @@
 const JuejinHelper = require("juejin-helper");
+const {CronJob } = require('cron');
 const config = require('./config/index');
-const {sendEmail} = require('./helper/email')
+const { sendEmail } = require('./helper/email')
 
 async function run() {
     const juejin = new JuejinHelper();
@@ -44,4 +45,7 @@ async function run() {
     await juejin.logout();
 }
 
-run();
+const job = new CronJob('00 30 15 * * *', async ()=>{
+    await run();
+});
+job.start();

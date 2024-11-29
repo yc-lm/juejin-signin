@@ -1,9 +1,10 @@
 const nodemailer = require("nodemailer");
+const config = require('../config/index')
 
-const MY_EMAIL = 'test@qq.com'
+const MY_EMAIL = '845837723@qq.com'
 const AUTH = {
-    user: MY_EMAIL,
-    pass: "xxxxx",
+    user: config.MY_EMAIL,
+    pass: config.EMAIL_AUTH,
 }
 const transporter = nodemailer.createTransport({
     host: "smtp.qq.com",
